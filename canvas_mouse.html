@@ -127,7 +127,11 @@
             }
 
             document.onkeydown = function (e) { a = b = 0; R += 0.05 }
-            document.ontouchend = function (e) { draw(e); }
+            document.ontouchend = function (e) { 
+                a = b = 0;
+                R += 0.05;
+                draw(e);
+            }
 
             canvas.onmousemove({ pageX: 300, pageY: 290 });
 
