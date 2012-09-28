@@ -20,12 +20,12 @@
             var H = canvas.height = window.innerHeight;
             c.fillRect(0, 0, W, H); // resize <canvas> and draw black rect (default)
             c.globalCompositeOperation = "lighter"; // switch to additive color application
-            c.lineWidth = 0.2; //设置画笔的大小
+            c.lineWidth = 1.0; //设置画笔的大小
             c.lineCap = "round"; //设置圆滑
             var bool = 0,
             t = 0; // theta
 
-            canvas.onmousemove = function (e) {
+            function draw(e){
                 if (window.T) {
                     if (D == 9) {
                         D = Math.random() * 15; f(1);
@@ -116,10 +116,18 @@
                     B = Y; // set original coord.y
 
                 }, 16);
+            }
 
+            canvas.onmousemove = function (e) {
+                draw(e);
+            }
+
+            canvas.touchmove = function(e) {
+                draw(e);
             }
 
             document.onkeydown = function (e) { a = b = 0; R += 0.05 }
+            document.touchstart = function (e) { a = b = 0; R += 0.05 }
 
             canvas.onmousemove({ pageX: 300, pageY: 290 })
 
